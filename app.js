@@ -9,6 +9,8 @@ const cartRoutes = require('./routes/cart')
 const catalogRoutes = require('./routes/catalog')
 const userPanelRoutes = require('./routes/user_panel')
 const homeRoutes = require('./routes/home')
+const adminPanelRoutes = require('./routes/admin_panel')
+const itemRoutes = require('./routes/item')
 
 
 mongoose.connect(process.env.MONGO_URI)
@@ -23,5 +25,8 @@ server.use('/login',authRoutes)
 server.use('/catalog',catalogRoutes)
 server.use('/my',userPanelRoutes)
 server.use('/',homeRoutes)
+server.use('/admin',adminPanelRoutes)
+server.use('/item',itemRoutes)
+
 
 server.listen(80)

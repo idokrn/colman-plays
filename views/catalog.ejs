@@ -18,84 +18,22 @@
         <h1 class="text-center mb-5">Computer Parts Catalog</h1>
         
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <% for( const item of items){ %>
+                <h1><% item %></h1>
             <div class="col">
                 <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="CPU">
+                    <img src=<%= item.imageUrl%> class="card-img-top" alt="CPU">
                     <div class="card-body">
-                        <h5 class="card-title">High-Performance CPU</h5>
-                        <p class="card-text">8-core processor for demanding tasks</p>
-                        <p class="card-text"><strong>$299.99</strong></p>
+                        <h5 class="card-title"><%= item.name%></h5>
+                        <p class="card-text"><%= item.description%></p>
+                        <p class="card-text"><strong>$<%= item.price%></strong></p>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary w-100">Add to Cart</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="GPU">
-                    <div class="card-body">
-                        <h5 class="card-title">Graphics Card</h5>
-                        <p class="card-text">4GB GDDR6 for smooth gaming experience</p>
-                        <p class="card-text"><strong>$249.99</strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="RAM">
-                    <div class="card-body">
-                        <h5 class="card-title">RAM Kit</h5>
-                        <p class="card-text">16GB DDR4 3200MHz (2x8GB)</p>
-                        <p class="card-text"><strong>$89.99</strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="SSD">
-                    <div class="card-body">
-                        <h5 class="card-title">Solid State Drive</h5>
-                        <p class="card-text">1TB NVMe M.2 for fast boot and load times</p>
-                        <p class="card-text"><strong>$129.99</strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="Motherboard">
-                    <div class="card-body">
-                        <h5 class="card-title">ATX Motherboard</h5>
-                        <p class="card-text">Compatible with latest CPUs, Wi-Fi 6</p>
-                        <p class="card-text"><strong>$159.99</strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/api/placeholder/300/200" class="card-img-top" alt="Power Supply">
-                    <div class="card-body">
-                        <h5 class="card-title">Power Supply Unit</h5>
-                        <p class="card-text">650W 80+ Gold certified, modular design</p>
-                        <p class="card-text"><strong>$89.99</strong></p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+        <% } %>
         </div>
     </div>
 
