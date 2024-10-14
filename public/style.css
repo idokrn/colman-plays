@@ -41,3 +41,217 @@ th {
     text-decoration: none;
     border-radius: 5px;
 }
+
+
+/* Daniel_code */
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #2980b9;
+}
+
+/* Login & Cart Button Container */
+header {
+    position: relative;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Common Styling for Both Buttons */
+.login-button, .cart-button {
+    position: absolute;
+    top: 55.5%;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+/* Position Login Button */
+.login-button {
+    left: 10px;
+}
+
+/* Position Cart Button */
+.cart-button {
+    left: 110px; 
+}
+
+/* Hover Effect */
+.login-button:hover, .cart-button:hover {
+    background-color: #2980b9;
+}
+
+/* Icon Styling */
+.cart-button i {
+    margin-right: 5px;
+}
+
+
+/* Login Button Styling */
+.login-button {
+    position: absolute;
+    left: 20px;
+    top: 70%;
+    transform: translateY(-50%);
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #2980b9;
+}
+
+/* Section Title Styling */
+section h2 {
+    color: #34495e;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Product Section Styling */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product h3 {
+    color: #2980b9;
+    font-size: 1.5em;
+}
+
+.product p {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin: 10px 0;
+}
+
+/* News Section Styling */
+.news-feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.news-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-item h3 {
+    color: #e74c3c;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.news-item p {
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+/* General Styling for Section Spacing */
+section {
+    margin-bottom: 40px;
+}
+
+/* Footer (Optional) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
