@@ -1,25 +1,33 @@
 const mongoose = require('mongoose');
 
-const ShoppingCartSchema = new mongoose.Schema({
+const CartSchema = new mongoose.Schema({
     items: [mongoose.Types.ObjectId],  // List of items by their objectId.
-    purchased: Boolean,          // True if this cart was purchased.
+    purchased: {type: Boolean},          // True if this cart was purchased.
+    purchase_date: {type: Date},
+    total: {type: Number},
 });
 
 
-const ShoppingCart = mongoose.model('ShoppingCart', ShoppingCartSchema);
+const Cart = mongoose.model('Cart', CartSchema);
 
 const create = async () => {
-    const shopping_cart = new ShoppingCart({
+    const cart = new Cart({
         items: [],
         purchased: false,
+        purchase_date: new Date(),
+        total: 0
     });
 
-    return await shopping_cart.save();
+    return await cart.save();
 };
 
 const getById = async (id) => {
-    return await ShoppingCart.findById(id);
+    return await Cart.findById(id);
 };
+
+const findByIds = async (ids) => {
+    return await Cart.find({_id: {$in: ids}})
+}
 
 const addItem = async (cart_id, item_id) => {
     const cart = await getById(cart_id);
@@ -50,6 +58,7 @@ const purchase = async (cart_id) => {
         return null;
 
     cart.purchased = true;
+    cart.purchase_date = new Date();
     await cart.save();
     return cart;
 };
@@ -61,4 +70,5 @@ module.exports = {
     addItem,
     getById,
     create,
+    findByIds,
 }
