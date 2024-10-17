@@ -161,6 +161,39 @@ header {
     background-color: #2980b9;
 }
 
+/* Nav bar and catalog drop down styling */
+.navbar-nav .dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    border-radius: 0.5rem;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Catalog button */
+.catalog-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: inherit; /* Inherit color from .text-light */
+}
+
+.catalog-btn::after {
+    content: "\2022 \2022 \2022"; /* Three vertical dots */
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    color: inherit; /* Make dots match text color */
+}
+
+
 /* Section Title Styling */
 section h2 {
     color: #34495e;
