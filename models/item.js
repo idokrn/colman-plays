@@ -18,7 +18,8 @@ const ItemSchema = new mongoose.Schema({
     },
     category: {                 // Category of the item
         type: String,
-    },
+        required: true
+    }
 });
 
 const Item = mongoose.model('Item', ItemSchema);
