@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     cart: { type: mongoose.Types.ObjectId, required: true },
-    history: [mongoose.Types.ObjectId]
+    history: [mongoose.Types.ObjectId],
+    isAdmin: {type: Boolean, required: true}
 });
 
 const User = mongoose.model('User', userSchema);
@@ -20,6 +21,7 @@ const create = async (name, email, password) => {
         password: password,
         cart: cart._id,
         history: [],
+        isAdmin: false,
     });
 
     return await user.save();

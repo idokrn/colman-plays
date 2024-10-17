@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Item = require('./item')
 
 const CartSchema = new mongoose.Schema({
     items: [mongoose.Types.ObjectId],  // List of items by their objectId.
@@ -30,11 +31,15 @@ const findByIds = async (ids) => {
 }
 
 const addItem = async (cart_id, item_id) => {
+    const item = await Item.getById(item_id)
     const cart = await getById(cart_id);
-    if (!cart)
+    
+    if (!cart || !item)
         return null;
 
     cart.items.push(item_id);
+    cart.total += item.price
+
     await cart.save();
     return cart;
 };
@@ -63,6 +68,18 @@ const purchase = async (cart_id) => {
     return cart;
 };
 
+const getAllItems = async (cart_id) => {
+    const cart = await getById(cart_id);
+    if (!cart) return null;
+
+    var res = [];
+    for (item_id of cart.items) {
+        const item = await Item.getById(item_id)
+        res.push(item)
+    }
+
+    return(res)
+}
 
 module.exports = {
     purchase,
@@ -71,4 +88,5 @@ module.exports = {
     getById,
     create,
     findByIds,
+    getAllItems,
 }

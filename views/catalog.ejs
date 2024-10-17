@@ -19,25 +19,34 @@
         
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <% for( const item of items){ %>
-                <h1><% item %></h1>
             <div class="col">
                 <div class="card h-100">
-                    <img src=<%= item.imageUrl%> class="card-img-top" alt="CPU">
+                    <img src=<%= item.imageUrl%> class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><%= item.name%></h5>
                         <p class="card-text"><%= item.description%></p>
                         <p class="card-text"><strong>$<%= item.price%></strong></p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary w-100">Add to Cart</button>
+                        <button onclick='addToCart("<%= item._id.toString() %>")' class="btn btn-primary w-100">Add to Cart</button>
                     </div>
                 </div>
             </div>
-        <% } %>
+            <% } %>
         </div>
     </div>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            contentType: "application/json; charset=utf-8"
+        })
+
+        function addToCart(_id) {
+            $.post('/cart/add', JSON.stringify({id: _id}), (data,status) => {alert('item added to cart')})
+        }
+    </script>
 </body>
 </html>
