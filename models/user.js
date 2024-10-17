@@ -56,17 +56,18 @@ const deleteById = async (id) => {
 };
 
 const purchase = async (id) => {
-    const User = await getById(id);
-    const new_cart = await ShoppingCart.create();
-    if (!User)
-        return null;
+    const user = await getById(id);
+    if (!user) return null;
 
-    await ShoppingCart.purchase(User.cart);
-    User.history.push(User.cart);
-    User.cart = new_cart._id;
+    const new_cart = await Cart.create();
+    if (!new_cart) return null;
 
-    await User.save();
-    return User;
+    await Cart.purchase(user.cart);
+    user.history.push(user.cart);
+    user.cart = new_cart._id;
+
+    await user.save();
+    return user;
 };
 
 module.exports = {

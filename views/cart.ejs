@@ -30,7 +30,7 @@
             <% } %>
         </table>
         <p id="total_price" class="total">Total: $<%= cart.total %></p>
-        <a href="#" class="btn">Proceed to Checkout</a>
+        <a href="#" onclick="purchaseCart()" class="btn">Proceed to Checkout</a>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -46,6 +46,14 @@
                 // Update the total
                 const totalElement = document.getElementById('total_price');
                 totalElement.textContent = `Total: $${data.new_price}`;
+            })
+        }
+
+        function purchaseCart() {
+            $.get(`/cart/purchase`, {}, (data, status) => {
+                window.location.href = '/confirm'
+            }).fail((data,status) => {
+                alert("Cart is empty")
             })
         }
     </script>
