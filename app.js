@@ -30,6 +30,6 @@ server.use('/',homeRoutes)
 server.use('/admin',adminPanelRoutes)
 server.use('/item',itemRoutes)
 server.use('/confirm', confirmRouts)
-app.use('/contact', contactRoutes);
+server.use('/contact', contactRoutes);
 
 server.listen(80)
