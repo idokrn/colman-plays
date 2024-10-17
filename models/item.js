@@ -1,33 +1,40 @@
 const mongoose = require('mongoose');
 
 const ItemSchema = new mongoose.Schema({
-    name: {                     // Name of the item
+    name: {                
         type: String,
         required: true,
     },
-    price: {                    // Price of the item
+    price: {             
         type: Number,
         required: true,
     },
-    description: {              // Description of the item
+    description: {             
         type: String,
         required: true,
     },
-    imageUrl: {                 // URL of the item's image
+    imageUrl: {                 
         type: String,
     },
-    category: {                 // Category of the item
+    category: {                
         type: String,
         required: true
-    }
+    },
+    featured: { 
+        type: Boolean,
+        default: false
+    } 
 });
 
 const Item = mongoose.model('Item', ItemSchema);
 
 // Function to create a new item
-const create = async (name,price,description,imageUrl,category) => {
-    const item = new Item({name,price,description,imageUrl,category});
+const create = async (name,price,description,imageUrl,category,featured) => {
+    const item = new Item({name,price,description,imageUrl,category,featured});
     return await item.save();
+};
+const getFeatured = async () => {
+    return await Item.find({ featured: true });
 };
 
 // Function to get an item by ID
@@ -39,11 +46,11 @@ const getAll = async ()=>{
 }
 
 // Function to update an item
-const update = async (id,name,price,description,imageUrl,category) => {
+const update = async (id,name,price,description,imageUrl,category,featured) => {
     const item = await getById(id);
     if (!item) return null;
 
-    Object.assign(item,{name,price,description,imageUrl,category});
+    Object.assign(item,{name,price,description,imageUrl,category,featured});
     await item.save();
     return item;
 };
@@ -63,4 +70,5 @@ module.exports = {
     update,
     deleteById,
     getAll,
+    getFeatured
 };

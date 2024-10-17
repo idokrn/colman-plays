@@ -1,15 +1,21 @@
 const RSS = require('rss-parser');
+const Items = require('../models/item');
 
-// Login to User Transition when loging in
-async function ShowHome(req,res){
-    var login="Login"
-    const cookie = req.headers.cookie
-    if (cookie != null) login="Profile"
+async function ShowHome(req, res) {
+    var login = "Login";
+    const cookie = req.headers.cookie;
+    if (cookie != null) login = "Profile";
 
-    const rss_parser = new RSS()
-    const feed = await rss_parser.parseURL("https://gamerant.com/feed/gaming/")
+    const rss_parser = new RSS();
+    const feed = await rss_parser.parseURL("https://gamerant.com/feed/gaming/");
 
-    res.render("index.ejs",{login:login,news:feed.items,products:[]})
+    const featuredProducts = await Items.getFeatured();
+
+    res.render("index.ejs", {
+        login: login,
+        news: feed.items,
+        products: featuredProducts 
+    });
 }
 
-module.exports = {ShowHome}
+module.exports = { ShowHome };

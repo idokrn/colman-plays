@@ -44,6 +44,11 @@
                                 <input type="text" class="form-control" id="category" name="category">
                             </div>
 
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="featured" name="featured">
+                                <label for="featured" class="form-check-label">Featured</label>
+                            </div>
+
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">Insert Item</button>
                             </div>
@@ -63,7 +68,8 @@
             
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
-
+            data.featured = document.getElementById('featured').checked;
+            
             try {
                 const response = await fetch('/item', {
                     method: 'POST',
