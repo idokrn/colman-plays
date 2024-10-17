@@ -21,4 +21,15 @@ async function addToCart(req,res) {
     return res.status(200).send()
 }
 
-module.exports = {ShowCart,addToCart}
+async function removeItem(req, res) {
+    const user = req.user;
+    const cart = await Cart.getById(user.cart)
+
+    const new_cart = await Cart.deleteItem(cart._id,req.params.item_id)
+    if (new_cart == null) {return res.status(500).send({error: "no such item with id " + req.params.item_id})}
+    return res.status(200).send({new_price: new_cart.total})
+
+
+}
+
+module.exports = {ShowCart,addToCart,removeItem}

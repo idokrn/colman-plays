@@ -8,5 +8,6 @@ router.use(authmiddleware.authenticateToken)
 
 router.get('/', cartController.ShowCart)
 router.post('/add', cartController.addToCart)
+router.get('/remove/:item_id', cartController.removeItem)
 
 module.exports = router;

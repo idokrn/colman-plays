@@ -9,8 +9,6 @@ async function ShowHome(req,res){
     const rss_parser = new RSS()
     const feed = await rss_parser.parseURL("https://gamerant.com/feed/gaming/")
 
-    console.log(feed.items[0])
-
     res.render("index.ejs",{login:login,news:feed.items,products:[]})
 }
 

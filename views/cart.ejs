@@ -14,19 +14,55 @@
                 <tr>
                     <th>Item</th>
                     <th>Price</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <% for (item of items) {%>
             <tbody>
-                <tr>
+                <tr data-item-id="<%= item._id %>">
                     <td><%= item.name %></td>
                     <td>$<%= item.price %></td>
+                    <td>
+                        <button class="remove-btn" onclick="removeItem('<%= item._id %>')">Remove</button>
+                    </td>
                 </tr>
             </tbody>
             <% } %>
         </table>
-        <p class="total">Total: $<%= cart.total %></p>
+        <p id="total_price" class="total">Total: $<%= cart.total %></p>
         <a href="#" class="btn">Proceed to Checkout</a>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            contentType: "application/json; charset=utf-8"
+        })
+
+        function removeItem(item_id) {
+            $.get(`/cart/remove/${item_id}`, {}, (data,status) => {
+                const row = document.querySelector(`tr[data-item-id="${item_id}"]`);
+                if (row) row.remove();
+
+                // Update the total
+                const totalElement = document.getElementById('total_price');
+                totalElement.textContent = `Total: $${data.new_price}`;
+            })
+        }
+    </script>
+
+    <style>
+        .remove-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </body>
-</html
+</html>

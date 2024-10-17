@@ -45,13 +45,15 @@ const addItem = async (cart_id, item_id) => {
 };
 
 const deleteItem = async (cart_id, item_id) => {
+    const item = await Item.getById(item_id)
     const cart = await getById(cart_id);
-    if (!cart)
-        return null;
+    
+    if (!cart || !item) return null;
 
     const index = cart.items.indexOf(item_id);
     if (index > -1)
         cart.items.splice(index,1);
+        cart.total -= item.price
 
     await cart.save();
     return cart;
@@ -75,7 +77,7 @@ const getAllItems = async (cart_id) => {
     var res = [];
     for (item_id of cart.items) {
         const item = await Item.getById(item_id)
-        res.push(item)
+        if (item != null) {res.push(item)}
     }
 
     return(res)
