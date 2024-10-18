@@ -41,7 +41,7 @@ const Item = mongoose.model('Item', ItemSchema);
 // Function to create a new item
 const create = async (name,price,description,imageUrl,category,featured) => {
     const item = new Item({name,price,description,imageUrl,category,featured});
-    return await item.save();
+    await item.save();
     await postToTwitter(item);
     return item;
 };
