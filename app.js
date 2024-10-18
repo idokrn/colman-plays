@@ -17,7 +17,7 @@ const contactRoutes = require('./routes/contact');
 
 mongoose.connect(process.env.MONGO_URI)
 const server = express()
-
+server.use(express.urlencoded({ extended: true }));
 server.use(cors())
 server.use(express.json())
 server.use(express.static('public'))
