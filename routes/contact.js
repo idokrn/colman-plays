@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     res.render('contact.ejs');
 });
 
-// Handle form submission
 router.post('/send-message', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
